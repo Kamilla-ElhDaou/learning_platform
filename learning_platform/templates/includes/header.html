@@ -1,0 +1,53 @@
+{% load static %}
+<header>
+  <nav class="navbar navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'pages:index' %}">
+          <img src="{% static 'img/earth-europe-solid.svg' %}" width="30" height="30" class="d-inline-block align-top" alt="logo">
+          LingWorld
+      </a>
+      <ul class="nav nav-pills">
+        <li class="nav-item dropdown">
+          <a href="{% url 'courses:course_list' %}" class="nav-link">
+            Курсы
+          </a>
+          <ul class="dropdown-menu">
+            {% for course in courses %}
+                <li><a class="dropdown-item" href="{{ course.get_absolute_url }}">{{ course.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'pages:contacts' %}" class="nav-link">
+            Контакты
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'pages:about' %}" class="nav-link">
+            О нас
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'pages:profile' %}" class="nav-link">
+            Профиль
+          </a>
+        </li>
+        {% comment %} {% if user.is_authenticated %}
+          <div class="btn-group" role="group" aria-label="Basic outlined example">
+          <button type="button" class="btn btn-outline-primary"><a class="text-decoration-none text-reset"
+              href="{% url 'blog:profile' user.username %}">{{ user.username }}</a></button>
+          <button type="button" class="btn btn-outline-primary"><a class="text-decoration-none text-reset"
+              href="{% url 'logout' %}">Выйти</a></button>
+          </div>
+        {% else %}
+          <div class="btn-group" role="group" aria-label="Basic outlined example">
+          <button type="button" class="btn btn-outline-primary"><a class="text-decoration-none text-reset"
+              href="{% url 'login' %}">Войти</a></button>
+          <button type="button" class="btn btn-outline-primary"><a class="text-decoration-none text-reset"
+              href="{% url 'registration' %}">Регистрация</a></button>
+          </div>
+        {% endif %} {% endcomment %}
+      </ul>
+    </div>
+  </nav>
+</header>

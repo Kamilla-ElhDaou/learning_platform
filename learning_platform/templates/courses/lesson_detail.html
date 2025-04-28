@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}{{ lesson.title }}{% endblock %}
+
+{% block content %}
+  <h1>{{ lesson.title }}</h1>
+  <p>{{ lesson.content }}</p>
+  {% if lesson.example %}
+    <h3>Примеры:</h3>
+    <p>{{ lesson.example }}</p>
+  {% endif %}
+  <p>Длительность: {{ lesson.duration }} минут</p>
+  <p>Уровень: {{ lesson.get_language_level_display }}</p>
+  <a href="{{ course.get_absolute_url }}">Вернуться к курсу</a>
+{% endblock %}

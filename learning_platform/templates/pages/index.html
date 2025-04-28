@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}LingWorld: Мир Языков{% endblock %}
+{% block content %}
+  <div >
+    <h1>Добро пожаловать на LingWorld!</h1>
+    <p >Изучайте иностранные языки с помощью интерактивных курсов и уроков.</p>
+    <hr>
+    <p>Начните с выбора курса ниже.</p>
+    <a href="{% url 'courses:course_list' %}">Перейти к курсам</a>
+</div>{% endblock %}

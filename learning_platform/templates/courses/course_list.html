@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Список курсов</h2>
+<ul>
+  {% for course in courses %}
+    <div>
+      <li><a href="{{ course.get_absolute_url }}">{{ course.title }}</a></li>
+      <p>{{ course.description|truncatewords:30  }}</p>
+    </div>
+  {% endfor %}
+</ul>
+{% endblock %}
